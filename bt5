@@ -1,0 +1,125 @@
+1) Ký hiệu chính
+
+Terminal (Start / End) — hình bầu dục: bắt đầu / kết thúc.
+
+Input/Output — parallelogram: nhập / xuất dữ liệu.
+
+Process — hình chữ nhật: xử lý (nếu cần).
+
+Decision — hình thoi (diamond): rẽ nhánh (điều kiện đúng/sai).
+
+2) Ý tưởng giải thuật (tóm tắt)
+
+Bắt đầu.
+
+Nhập diem (số nguyên hoặc thực).
+
+Kiểm tra theo thứ tự các điều kiện:
+
+diem < 4 → "KHÔNG ĐẠT"
+
+4 ≤ diem ≤ 6 → "TRUNG BÌNH"
+
+6 < diem ≤ 8 → "KHÁ"
+
+8 < diem ≤ 9 → "GIỎI"
+
+9 < diem ≤ 10 → "XUẤT SẮC"
+
+Xuất kết quả tương ứng.
+
+Kết thúc.
+
+(Ghi chú: quy ước ranh giới theo đề: khoảng có dấu ≤ và < như mô tả.)
+
+3) Sơ đồ khối (ASCII — chuỗi Decision nối tiếp)
+            +-----------------+
+            |     Start       |
+            +-----------------+
+                     |
+                     v
+        +---------------------------+
+        | Input diem (nhập điểm)    |
+        +---------------------------+
+                     |
+                     v
+            +------------------+
+            | diem < 4 ?       |   <-- Decision 1
+            +------------------+
+             /        \
+           Yes        No
+           /            \
+          v              v
++----------------+   +------------------+
+| Output "KHÔNG  |   | diem <= 6 ?      |   <-- Decision 2
+| ĐẠT"           |   +------------------+
++----------------+    /        \
+     \               Yes        No
+      \               /          \
+       v             v            v
+      (goto End)  +------------------+
+                 | Output "TRUNG    |
+                 | BÌNH"            |
+                 +------------------+   (if Yes -> End)
+                      \               
+                       v
+                 +------------------+
+                 | diem <= 8 ?      |   <-- Decision 3 (this branch is reached only if diem > 6)
+                 +------------------+
+                  /         \
+                Yes         No
+                /            \
+               v              v
+     +------------------+   +------------------+
+     | Output "KHÁ"     |   | diem <= 9 ?      |   <-- Decision 4 (reached if diem > 8)
+     +------------------+   +------------------+
+          \                  /        \
+           v               Yes        No
+          (End)             /          \
+                       +------------------+
+                       | Output "GIỎI"   |
+                       +------------------+
+                            \ 
+                             v
+                       +------------------+
+                       | Output "XUẤT     |
+                       | SẮC"             |
+                       +------------------+
+                             |
+                             v
+                          +------+
+                          | End  |
+                          +------+
+
+
+Giải thích luồng: sau mỗi Output chính chương trình kết thúc (End). Mình trình bày theo chuỗi Decision để dễ theo dõi: kiểm tra từ thấp lên cao, mỗi nhánh No tiếp tục kiểm tra điều kiện tiếp theo.
+
+4) Pseudocode (if — else if — else)
+Start
+Input diem
+If diem < 4 then
+    Output "KHÔNG ĐẠT"
+ElseIf diem <= 6 then         // ở đây đảm bảo diem >= 4
+    Output "TRUNG BÌNH"
+ElseIf diem <= 8 then         // ở đây đảm bảo diem > 6
+    Output "KHÁ"
+ElseIf diem <= 9 then         // ở đây đảm bảo diem > 8
+    Output "GIỎI"
+ElseIf diem <= 10 then        // ở đây đảm bảo diem > 9
+    Output "XUẤT SẮC"
+Else
+    Output "Giá trị điểm không hợp lệ"   // tùy chọn: xử lý điểm ngoài phạm vi (âm hoặc >10)
+EndIf
+End
+
+5) Ghi chú / mở rộng
+
+Mình đã dùng quy ước ranh giới đúng theo đề: 4 ≤ diem ≤ 6 được thể hiện bằng ElseIf diem <= 6 (vì trước đó đã loại diem < 4). Tương tự cho các mức khác.
+
+Nên thêm kiểm tra phạm vi hợp lệ (ví dụ 0 ≤ diem ≤ 10) nếu đề yêu cầu điểm trong 0–10. Mình đã chừa Else cuối để báo giá trị không hợp lệ.
+
+Nếu muốn in kèm giá trị điểm: Output "KHÁ - điểm: " + diem.
+
+Khi vẽ trên giấy/drive, ghi rõ nhãn mũi tên Yes/No để người xem theo dõi dễ hơn.
+
+Muốn chia ra thành nhiều Decision tách biệt (mỗi Decision xử lý một điều kiện) hoặc dùng Decision + Process với nhãn rẽ nhánh — cả hai đều chấp nhận được, tuỳ yêu cầu thẩm mỹ/khả năng đọc.
