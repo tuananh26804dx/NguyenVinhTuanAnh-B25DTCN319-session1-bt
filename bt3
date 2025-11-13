@@ -1,0 +1,65 @@
+1) Ký hiệu chính
+
+Terminal (Start / End) — hình bầu dục: bắt đầu / kết thúc.
+
+Input/Output — parallelogram: nhập / xuất dữ liệu.
+
+Process — hình chữ nhật: phép tính / xử lý.
+
+Decision — hình thoi: (không cần dùng cho bài này trừ khi kiểm tra lỗi nhập).
+
+2) Ý tưởng giải thuật (tóm tắt)
+
+Bắt đầu.
+
+Nhập hai số nguyên a và b.
+
+Tính sum = a + b.
+
+Xuất sum.
+
+Kết thúc.
+
+3) Sơ đồ khối (ASCII)
+          +-----------------+
+          |     Start       |    <-- Terminal (Start)
+          +-----------------+
+                   |
+                   v
+      +--------------------------+
+      | Input a, b               |    <-- Input/Output (nhập 2 số nguyên)
+      +--------------------------+
+                   |
+                   v
+      +--------------------------+
+      | sum = a + b              |    <-- Process (tính toán)
+      +--------------------------+
+                   |
+                   v
+      +--------------------------+
+      | Output sum               |    <-- Output (xuất kết quả)
+      +--------------------------+
+                   |
+                   v
+          +-----------------+
+          |      End        |    <-- Terminal (End)
+          +-----------------+
+
+4) Pseudocode (dễ kiểm thử)
+Start
+Input a, b
+sum = a + b
+Output sum
+End
+
+5) Bản đồ bước (tương ứng với bảng chức năng)
+
+Bắt đầu chương trình — Terminal (Start).
+
+Nhập vào 2 số nguyên a, b — Input/Output.
+
+Tính tổng: sum = a + b — Process.
+
+Xuất tổng ra màn hình — Output.
+
+Kết thúc chương trình — Terminal (End).
