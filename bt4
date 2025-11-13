@@ -1,0 +1,74 @@
+1) Ký hiệu chính
+
+Terminal (Start / End) — hình bầu dục: bắt đầu / kết thúc.
+
+Input/Output — parallelogram: nhập / xuất dữ liệu.
+
+Process — hình chữ nhật: xử lý (nếu cần).
+
+Decision — hình thoi (diamond): rẽ nhánh (điều kiện đúng/sai).
+
+2) Ý tưởng giải thuật (tóm tắt)
+
+Bắt đầu.
+
+Nhập điểm (có thể là số nguyên hoặc số thực).
+
+Kiểm tra điều kiện điểm >= 5.
+
+Nếu đúng → xuất "ĐẠT". Nếu sai → xuất "KHÔNG ĐẠT".
+
+Kết thúc.
+
+(Ghi chú: nếu muốn, có thể chuẩn hoá điểm (vd. làm tròn) trước khi so sánh.)
+
+3) Sơ đồ khối (ASCII)
+          +-----------------+
+          |     Start       |    <-- Terminal (Start)
+          +-----------------+
+                   |
+                   v
+      +--------------------------+
+      | Input điểm (nhập số)     |    <-- Input/Output
+      +--------------------------+
+                   |
+                   v
+         +------------------------+
+         | điểm >= 5 ?            |    <-- Decision
+         +------------------------+
+          /           \
+        Yes           No
+        /               \
+       v                 v
++----------------+   +--------------------+
+| Output "ĐẠT"   |   | Output "KHÔNG ĐẠT" |
++----------------+   +--------------------+
+        \               /
+         \             /
+          v           v
+        +-----------------+
+        |      End        |    <-- Terminal (End)
+        +-----------------+
+
+4) Pseudocode (dễ kiểm thử)
+Start
+Input diem
+If diem >= 5 then
+    Output "ĐẠT"
+Else
+    Output "KHÔNG ĐẠT"
+EndIf
+End
+
+
+Muốn hiển thị kèm giá trị: Output "ĐẠT - điểm: " + diem.
+
+5) Ghi chú / mở rộng
+
+Nhập sai (không phải số): nếu cần, thêm khối kiểm tra kiểu dữ liệu trước khi so sánh.
+
+Quy ước cho điểm biên (5.0): >= 5 cho phép điểm 5 là đạt.
+
+Nếu muốn phân loại chi tiết hơn (VD: Giỏi, Khá, Trung bình, Yếu), thay Decision đơn bằng nhiều nhánh (or nhiều Decision nối tiếp).
+
+Nếu cần in thêm thông báo cho giá trị âm hoặc >10 (nếu thang 0–10), thêm khối kiểm tra phạm vi.
