@@ -1,0 +1,130 @@
+1) Ký hiệu chính
+
+Terminal (Start / End) — hình bầu dục: bắt đầu / kết thúc.
+
+Input/Output — parallelogram: nhập / xuất dữ liệu.
+
+Process — hình chữ nhật: xử lý / tính toán.
+
+Decision — hình thoi (diamond): rẽ nhánh (điều kiện đúng/sai).
+
+2) Ý tưởng thuật toán (tóm tắt)
+
+Bắt đầu.
+
+Nhập a, b, c.
+
+Nếu a == 0 → chuyển sang giải phương trình bậc nhất b*x + c = 0 (xử lý như trước).
+
+Nếu a != 0 → tính Δ = b^2 - 4*a*c.
+
+Nếu Δ < 0 → xuất "Vô nghiệm (trong ℝ)".
+
+Nếu Δ == 0 → nghiệm kép x = -b / (2*a).
+
+Nếu Δ > 0 → hai nghiệm phân biệt
+x1 = (-b + sqrt(Δ)) / (2*a)
+x2 = (-b - sqrt(Δ)) / (2*a).
+
+Xuất kết quả tương ứng và kết thúc.
+
+3) Sơ đồ khối (ASCII — dễ chép)
+             +-----------------+
+             |     Start       |
+             +-----------------+
+                      |
+                      v
+         +---------------------------+
+         | Input a, b, c (nhập 3 số) |
+         +---------------------------+
+                      |
+                      v
+             +------------------+
+             | a == 0 ?         |   <-- Decision 1
+             +------------------+
+              /        \
+            Yes        No
+            /           \
+           v             v
++----------------+   +--------------------------+
+| Solve b*x + c  |   | Delta = b^2 - 4*a*c      |   <-- Process
+| (b == 0 ? see  |   +--------------------------+
+| subcases)      |               |
++----------------+               v
+      |                     +------------------+
+      v                     | Delta < 0 ?      |   <-- Decision 2
+   +------+                 +------------------+
+   |Output|                    /      \
+   |"Vô    |                 Yes      No
+   |nghiệm"|                 /         \
+   +------+                v           v
+      |            +----------------+  +------------------+
+      v            | Output "Vô     |  | Delta == 0 ?     |   <-- Decision 3
+   +------+        | nghiệm (R)"    |  +------------------+
+   | End  |        +----------------+    /       \
+   +------+                             Yes       No
+                                          /         \
+                                         v           v
+                               +----------------+  +---------------------------+
+                               | x = -b/(2a)    |  | x1 = (-b+sqrt(Δ))/(2a)    |
+                               | Output x (double)| | x2 = (-b-sqrt(Δ))/(2a)    |
+                               +----------------+  | Output x1, x2             |
+                                   |               +---------------------------+
+                                   v                         |
+                                 +------+                     v
+                                 | End  |                 +------+
+                                 +------+                 | End  |
+                                                         +------+
+
+
+Ghi chú lưu ý:
+
+Nhánh a == 0 cần xử lý riêng: nếu a == 0 và b == 0:
+
+Nếu c == 0 → "Vô số nghiệm".
+
+Nếu c != 0 → "Vô nghiệm".
+
+Nếu a == 0 và b != 0 → nghiệm bậc nhất x = -c / b.
+
+Mình tách phần bậc nhất gọn trong ô Solve b*x + c (ghi rõ các subcase khi vẽ).
+
+4) Pseudocode (đầy đủ, có xử lý a = 0)
+Start
+Input a, b, c
+If a == 0 then
+    // xử lý phương trình bậc nhất b*x + c = 0
+    If b == 0 then
+        If c == 0 then
+            Output "Phương trình có vô số nghiệm"
+        Else
+            Output "Phương trình vô nghiệm"
+        EndIf
+    Else
+        x = -c / b
+        Output "Phương trình bậc nhất, nghiệm x = " + x
+    EndIf
+Else
+    Delta = b*b - 4*a*c
+    If Delta < 0 then
+        Output "Phương trình vô nghiệm (với nghiệm thực)"
+    ElseIf Delta == 0 then
+        x = -b / (2*a)
+        Output "Phương trình có nghiệm kép x = " + x
+    Else
+        x1 = (-b + sqrt(Delta)) / (2*a)
+        x2 = (-b - sqrt(Delta)) / (2*a)
+        Output "Phương trình có hai nghiệm phân biệt: x1 = " + x1 + ", x2 = " + x2
+    EndIf
+EndIf
+End
+
+5) Ghi chú kỹ thuật & đề xuất trình bày
+
+Khi tính sqrt(Δ), đảm bảo Δ >= 0; nếu cần nghiệm phức (không yêu cầu ở đề này) thì có thể tính phần thực/ảo.
+
+Khi in nghiệm, có thể làm tròn (ví dụ 2 chữ số thập phân) để đẹp.
+
+Nên ghi nhãn Yes/No (Đúng/Sai) trên mũi tên để người đọc dễ theo dõi.
+
+Nếu vẽ trên giấy, tách rõ phần xử lý a = 0 (bậc nhất) thành một nhánh con với các subcase b == 0 → c == 0/... để tránh rối.
