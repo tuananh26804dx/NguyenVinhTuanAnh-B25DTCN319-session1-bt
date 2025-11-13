@@ -1,0 +1,72 @@
+Ký hiệu chính
+
+Terminal (Start / End) — hình bầu dục: bắt đầu / kết thúc.
+
+Input/Output — parallelogram: nhập / xuất dữ liệu.
+
+Process — hình chữ nhật: xử lý (nếu cần).
+
+Decision — hình thoi (diamond): rẽ nhánh (điều kiện đúng/sai).
+
+2) Ý tưởng giải thuật (tóm tắt)
+
+Bắt đầu.
+
+Nhập số nguyên n.
+
+Kiểm tra điều kiện n % 2 == 0.
+
+Nếu đúng → xuất "Số này là số chẵn". Ngược lại → xuất "Số này là số lẻ".
+
+Kết thúc.
+
+(Ghi chú: 0 là số chẵn.)
+
+3) Sơ đồ khối (ASCII)
+          +-----------------+
+          |     Start       |    <-- Terminal (Start)
+          +-----------------+
+                   |
+                   v
+      +--------------------------+
+      | Input n (nhập số nguyên) |    <-- Input/Output
+      +--------------------------+
+                   |
+                   v
+             +-----------------+
+             | n % 2 == 0 ?    |    <-- Decision
+             +-----------------+
+              /           \
+            Yes           No
+            /               \
+           v                 v
+  +----------------------+  +----------------------+
+  | Output "Số chẵn"     |  | Output "Số lẻ"       |    <-- Output
+  +----------------------+  +----------------------+
+           \               /
+            \             /
+             v           v
+          +-----------------+
+          |      End        |    <-- Terminal (End)
+          +-----------------+
+
+4) Pseudocode (dễ kiểm thử)
+Start
+Input n
+If n % 2 == 0 then
+    Output "Số này là số chẵn"
+Else
+    Output "Số này là số lẻ"
+EndIf
+End
+
+
+Nếu muốn hiển thị thêm số (ví dụ: Output "Số này là số chẵn: " + n) có thể sửa phần Output tương ứng.
+
+5) Gợi ý trình bày / mở rộng
+
+Nếu muốn phân biệt rõ n không phải số nguyên (nhập sai), thêm khối kiểm tra kiểu dữ liệu trước khi n % 2.
+
+Có thể mở rộng hiển thị cho trường hợp n == 0 bằng cách ghi chú: 0 là số chẵn.
+
+Ghi nhãn rõ trên mũi tên (Yes / No) để người xem hiểu luồng.
