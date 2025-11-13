@@ -1,0 +1,112 @@
+1. Mục tiêu
+
+Làm quen các ký hiệu cơ bản khi vẽ flowchart:
+🔹 Terminal (bắt đầu/kết thúc)
+🔹 Input/Output
+🔹 Process (xử lý)
+🔹 Decision (rẽ nhánh)
+
+Vẽ được sơ đồ khối thể hiện thuật toán xử lý nhiều phép toán.
+
+Hiểu cách xử lý trường hợp đặc biệt chia cho 0.
+
+⚙️ 2. Thuật toán tóm tắt
+
+Bước 1. Bắt đầu.
+Bước 2. Nhập number1, number2, op.
+Bước 3. Kiểm tra op:
+
+Nếu op = '+' → Kết quả = number1 + number2.
+
+Nếu op = '-' → Kết quả = number1 - number2.
+
+Nếu op = '*' → Kết quả = number1 * number2.
+
+Nếu op = '/':
+
+Nếu number2 == 0 → Xuất "Lỗi chia 0".
+
+Ngược lại → Kết quả = number1 / number2.
+
+Nếu không thuộc {+, -, *, /} → Xuất "Phép tính không hợp lệ".
+Bước 4. Xuất kết quả.
+Bước 5. Kết thúc.
+
+🧩 3. Flowchart mô tả (dạng chữ dễ vẽ lại)
+                 +----------------+
+                 |     Start      |
+                 +----------------+
+                         |
+                         v
+       +-------------------------------------+
+       | Nhập number1, number2, op (+ - * /) |
+       +-------------------------------------+
+                         |
+                         v
+               +--------------------+
+               | op == '+' ?        |
+               +--------------------+
+                /       \
+             Yes         No
+            /             \
+ +------------------+       v
+ | result = n1 + n2 |  +--------------------+
+ | Output result    |  | op == '-' ?        |
+ +------------------+  +--------------------+
+         |             /       \
+         v          Yes         No
+                    /             \
+        +------------------+       v
+        | result = n1 - n2 |  +--------------------+
+        | Output result    |  | op == '*' ?        |
+        +------------------+  +--------------------+
+                 |             /       \
+                 v          Yes         No
+                            /             \
+               +------------------+         v
+               | result = n1 * n2 |  +--------------------+
+               | Output result    |  | op == '/' ?        |
+               +------------------+  +--------------------+
+                         |           /         \
+                         v        Yes           No
+                                   /              \
+                     +---------------------+        v
+                     | number2 == 0 ?      |  +------------------------------+
+                     +---------------------+  | Output "Phép tính không hợp lệ"|
+                      /           \          +------------------------------+
+                    Yes            No                    |
+                    /               \                    v
+     +--------------------------+   +--------------------------+
+     | Output "Lỗi chia 0"     |   | result = n1 / n2          |
+     +--------------------------+   | Output result             |
+                                    +--------------------------+
+                                               |
+                                               v
+                                       +----------------+
+                                       |      End       |
+                                       +----------------+
+
+💻 4. Pseudocode (viết theo dạng dễ lập trình)
+Start
+Input number1, number2, op
+If op == '+' then
+    result = number1 + number2
+    Output "Kết quả: ", result
+Else if op == '-' then
+    result = number1 - number2
+    Output "Kết quả: ", result
+Else if op == '*' then
+    result = number1 * number2
+    Output "Kết quả: ", result
+Else if op == '/' then
+    If number2 == 0 then
+        Output "Lỗi chia cho 0"
+    Else
+        result = number1 / number2
+        Output "Kết quả: ", result
+    EndIf
+Else
+    Output "Phép tính không hợp lệ"
+EndIf
+End
+
