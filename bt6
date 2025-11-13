@@ -1,0 +1,105 @@
+1) Ký hiệu chính
+
+Terminal (Start / End) — hình bầu dục: bắt đầu / kết thúc.
+
+Input/Output — parallelogram: nhập / xuất dữ liệu.
+
+Process — hình chữ nhật: xử lý / tính toán.
+
+Decision — hình thoi (diamond): rẽ nhánh (điều kiện đúng/sai).
+
+2) Ý tưởng thuật toán (tóm tắt)
+
+Bắt đầu.
+
+Nhập a, b.
+
+Kiểm tra a == 0:
+
+Nếu đúng → kiểm tra b == 0:
+
+Nếu b == 0 → xuất "Vô số nghiệm".
+
+Ngược lại (b ≠ 0) → xuất "Vô nghiệm".
+
+Nếu sai (a ≠ 0) → tính nghiệm x = -b / a và xuất nghiệm.
+
+Kết thúc.
+
+3) Sơ đồ khối (ASCII)
+           +-----------------+
+           |     Start       |
+           +-----------------+
+                    |
+                    v
+        +---------------------------+
+        | Input a, b (nhập a và b)  |
+        +---------------------------+
+                    |
+                    v
+            +------------------+
+            | a == 0 ?         |   <-- Decision 1
+            +------------------+
+             /        \
+           Yes        No
+           /            \
+          v              v
+ +----------------+   +----------------------+
+ | b == 0 ?       |   |  x = -b / a          |   <-- Process
+ | (Decision 2)   |   +----------------------+
+ +----------------+            |
+   /      \                    v
+ Yes      No             +-------------------+
+ /         \            | Output "x = ..."   |
+v           v           +-------------------+
++-----------+                    |
+| Output    |                    v
+| "Vô số    |               +-----------+
+| nghiệm"   |               |   End     |
++-----------+               +-----------+
+    | 
+    v
++-----------+
+|   End     |
++-----------+
+
+(If b != 0 branch:)
++-------------+
+| Output      |
+| "Vô nghiệm" |
++-------------+
+      |
+      v
+   +------+
+   | End  |
+   +------+
+
+
+Ghi chú luồng:
+
+Từ Decision a == 0 ? nếu Yes thì đi xuống Decision b == 0 ? và xuất hai trường hợp tương ứng; nếu No thì tính nghiệm x = -b/a rồi xuất nghiệm và kết thúc.
+
+Bạn có thể ghi nhãn mũi tên Yes/No để rõ ràng.
+
+4) Pseudocode (dễ kiểm thử)
+Start
+Input a, b
+If a == 0 then
+    If b == 0 then
+        Output "Phương trình có vô số nghiệm"
+    Else
+        Output "Phương trình vô nghiệm"
+    EndIf
+Else
+    x = -b / a
+    Output "Phương trình có nghiệm duy nhất x = " + x
+EndIf
+End
+
+5) Ghi chú / kiểm tra thêm
+
+Khi a != 0 đảm bảo phép chia -b / a thực hiện bằng số thực (nếu muốn kết quả thập phân).
+
+Có thể thêm kiểm tra đầu vào (a, b phải là số) nếu cần.
+
+Nếu muốn hiển thị nghiệm với số chữ số thập phân cố định thì thêm bước format (ví dụ làm tròn 2 chữ số).
